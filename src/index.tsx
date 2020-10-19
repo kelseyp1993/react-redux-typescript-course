@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+function HelloWorld() {
+  // intrinsic element, with ReactDOM, the HTML tags are all intrinsic
+  // reference the intrensic element using a string-based tag name
+  // JSX - starts with lower case letter
+  return React.createElement('h1', null, 'Hello, World!');
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  //-custom component, to reference the componenet we pass in the
+  // function object r the class reference
+  //-"HelloWorld" is not being invoked here, the reference to the "HelloWorld"
+  // function is being passed in
+  //- always start with an uppercase
+  React.createElement(HelloWorld),
+  document.querySelector('#root'),
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
