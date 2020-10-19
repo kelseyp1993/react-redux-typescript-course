@@ -1,20 +1,17 @@
 import React from 'react';
 
 import { Car } from '../models/cars';
-import { Header } from '../models/headers';
 import { ToolHeader } from './ToolHeader';
 
 export type CarToolProps = {
     cars: Car[];
 }
 
-const header: Header = {id:1, name:'Car Tool'};
-
 export function CarTool(props: CarToolProps) {
 
     return (
         <>
-            <ToolHeader header={header}/>
+            <ToolHeader headerText="Car Tool"/>
             <table>
                 <thead>
                     <tr>

@@ -1,16 +1,18 @@
 import React from 'react';
 
-import { Header } from '../models/headers';
-
 export type ToolHeaderProps = {
-    header: Header;
+    headerText?: string;
 }
 
 export function ToolHeader(props: ToolHeaderProps) {
 
     return <> 
-            <header key={props.header.id}>
-                <h1>{props.header.name}</h1>
+            <header>
+                <h1>{props.headerText}</h1>
             </header>
     </>;
+}
+
+ToolHeader.defaultProps = {
+    headerText: 'The Tool',
 }
