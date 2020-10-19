@@ -8,19 +8,16 @@ export type CarToolProps = {
     cars: Car[];
 }
 
-const headerList: Header[] = [
-    {id:1, name:'Car Tool'},
-];
+const header: Header = {id:1, name:'Car Tool'};
 
 export function CarTool(props: CarToolProps) {
 
     return (
         <>
-            <ToolHeader headers={headerList}/>
+            <ToolHeader header={header}/>
             <table>
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Make</th>
                         <th>Model</th>
                         <th>Year</th>

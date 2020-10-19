@@ -8,15 +8,13 @@ export type ColorToolProps = {
     colors: Color[];
 }
 
-const headerList: Header[] = [
-    {id:1, name:'Color Tool'},
-];
+const header: Header = {id:1, name:'Color Tool'};
 
 export function ColorTool(props: ColorToolProps) {
 
     return (
         <>
-            <ToolHeader headers={headerList}/>
+            <ToolHeader header={header}/>
             <ul>
                 {props.colors.map(color => <li key={color.id}>{color.name}</li>)}
             </ul>
