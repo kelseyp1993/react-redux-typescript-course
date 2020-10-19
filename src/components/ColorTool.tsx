@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { Color } from '../models/colors';
 import { ToolHeader } from './ToolHeader';
@@ -8,14 +8,15 @@ export type ColorToolProps = {
 }
 
 
-export function ColorTool(props: ColorToolProps) {
-
-    return (
-        <>
-            <ToolHeader headerText="Color Tool"/>
-            <ul>
-                {props.colors.map(color => <li key={color.id}>{color.name}</li>)}
-            </ul>
-        </>
-    );
+export class ColorTool extends Component<ColorToolProps>{
+    render(){
+        return (
+            <>
+                <ToolHeader headerText="Color Tool"/>
+                <ul>
+                    {this.props.colors.map(color => <li key={color.id}>{color.name}</li>)}
+                </ul>
+            </>
+        );
+    }
 }
