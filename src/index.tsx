@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // named import
-import { HelloWorld as HelloWorld2} from './components/HelloWorld';
+import { ColorTool } from './components/ColorTool';
 import { CarTool } from './components/CarTool';
 
 ReactDOM.render(
@@ -13,7 +13,7 @@ ReactDOM.render(
   // function is being passed in
   //- always start with an uppercase letter
   <>
-    <HelloWorld2 />
+    <ColorTool />
     <CarTool />
   </>,
   document.querySelector('#root'),
