@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { Car } from '../models/cars';
+
 export function CarTool() {
-  // intrinsic element, with ReactDOM, the HTML tags are all intrinsic
-  // reference the intrensic element using a string-based tag name
-  // JSX - starts with lower case letter
-  return <>
+    const cars: Car[] = [
+        {id:5, make:'Nissan', model:'Maxima', year:2004, color:'blue', price:'$3,000'},
+        {id:6, make:'Honda', model:'CR-V', year:2017, color:'blue', price:'$30,000'},
+    ];
+
+    return <>
         <header>
             <h1>Car Tool</h1>
         </header>
@@ -20,22 +24,15 @@ export function CarTool() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Nissan</td>
-                    <td>Maxima</td>
-                    <td>2004</td>
-                    <td>blue</td>
-                    <td>$3,000</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Honda</td>
-                    <td>CR-V</td>
-                    <td>2017</td>
-                    <td>blue</td>
-                    <td>$30,000</td>
-                </tr>
+                {cars.map(car => 
+                    <tr key={car.id}>
+                        <td>{car.make}</td>
+                        <td>{car.model}</td>
+                        <td>{car.year}</td>
+                        <td>{car.color}</td>
+                        <td>{car.price}</td>
+                    </tr>
+                )}
             </tbody>
         </table>
     </>;
