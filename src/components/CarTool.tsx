@@ -30,12 +30,14 @@ export class CarTool extends Component<CarToolProps> {
                     id: Math.max(...this.state.cars.map((c) => c.id), 0) + 1,
                 },
             ],
+            editCarId: -1,
         })
     }
 
     deleteCar = (carId: number) => {
         this.setState({
             cars: this.state.cars.filter((c) => c.id !== carId),
+            editCarId: -1,
         });
     }
 
@@ -51,6 +53,23 @@ export class CarTool extends Component<CarToolProps> {
         });
     };
 
+    saveCar = (carEdit: Car) => {
+        var carsCopy = this.state.cars;
+
+        var index = carsCopy.findIndex(car => {
+            return carEdit.id === car.id;
+        })
+
+        if (index !== -1) {
+            carsCopy[index] = carEdit;
+
+            this.setState({
+                cars: carsCopy,
+                editCarId: -1,
+            });
+        }
+    };
+
     render() {
         return (
             <>
@@ -61,6 +80,7 @@ export class CarTool extends Component<CarToolProps> {
                     onEditCar={this.editCar}
                     onDeleteCar={this.deleteCar}
                     onCancelCar={this.cancelCar}
+                    onSaveCar={this.saveCar}
                 />
                 <CarForm buttonText="Add Car" onSubmitCar={this.addCar} />
             </>

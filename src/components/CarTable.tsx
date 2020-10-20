@@ -10,6 +10,7 @@ export type CarTableProps = {
     onEditCar: (carId: number) => void;
     onDeleteCar: (carId: number) => void;
     onCancelCar: () => void;
+    onSaveCar: (car: Car) => void;
 }
 
 export function CarTable(props: CarTableProps) {
@@ -33,7 +34,7 @@ export function CarTable(props: CarTableProps) {
                             <CarEditRow
                                 key={car.id}
                                 car={car}
-                                onSaveCar={() => null}
+                                onSaveCar={props.onSaveCar}
                                 onCancelCar={props.onCancelCar}
                             />
                         ) : (

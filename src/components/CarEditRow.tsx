@@ -34,7 +34,19 @@ export class CarEditRow extends Component<CarEditRowProps, CarEditRowState> {
 
     cancelCar = () => {
         this.props.onCancelCar();
-      };
+    };
+
+    saveCar = () => {
+        const car = {
+            id: this.props.car.id,
+            make: this.state.make,
+            model: this.state.model,
+            year: this.state.year,
+            color: this.state.color,
+            price: this.state.price,
+        }
+        this.props.onSaveCar(car);
+    };
 
     render() {
         return (
@@ -86,12 +98,8 @@ export class CarEditRow extends Component<CarEditRowProps, CarEditRowState> {
                     />
                 </td>
                 <td>
-                    <button type="button" onClick={() => null}>
-                        Save
-          </button>
-                    <button type="button" onClick={this.cancelCar}>
-                        Cancel
-          </button>
+                    <button type="button" onClick={this.saveCar}>Save</button>
+                    <button type="button" onClick={this.cancelCar}>Cancel</button>
                 </td>
             </tr>
         );
