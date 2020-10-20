@@ -1,6 +1,11 @@
 import React, { Component, ChangeEvent } from "react";
 
-export type CarFormProps = {};
+import { NewCar } from "../models/cars";
+
+export type CarFormProps = {
+  buttonText: string;
+  onSubmitCar: (car: NewCar) => void;
+};
 
 export type CarFormState = {
   make: string;
@@ -29,6 +34,17 @@ export class CarForm extends Component<CarFormProps, CarFormState> {
         e.target.type === "number" ? Number(e.target.value) : e.target.value,
     } as Pick<CarFormState, keyof CarFormState>);
   };
+
+  submitCar = () => {
+    this.props.onSubmitCar({...this.state});
+    this.setState({
+      make: "",
+      model: "",
+      year: 1999,
+      color: "",
+      price: "",
+    })
+}
 
   render() {
     console.log(this.state);
@@ -86,7 +102,7 @@ export class CarForm extends Component<CarFormProps, CarFormState> {
             onChange={this.change}
           />
         </div>
-        <button type="button">Add Car</button>
+        <button type="button" onClick={this.submitCar}>{this.props.buttonText}</button>
       </form>
     );
   }
