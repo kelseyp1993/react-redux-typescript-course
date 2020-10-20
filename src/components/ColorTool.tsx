@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Color } from '../models/colors';
+import { Color, NewColor } from '../models/colors';
 import { ColorForm } from './ColorForm';
 
 import { ToolHeader } from './ToolHeader';
@@ -9,16 +9,38 @@ export type ColorToolProps = {
     colors: Color[];
 }
 
+export type ColorToolState = {
+    colors: Color[]
+}
 
 export class ColorTool extends Component<ColorToolProps>{
+    state = {
+        //copy of the array
+        colors: [...this.props.colors],
+    }
+
+    addColor = (newColor: NewColor) => {
+        this.setState({
+            colors: [
+                ...this.state.colors,
+                {
+                    ...newColor,
+                    id: Math.max(...this.state.colors.map((c) => c.id), 0) +1,
+                },
+            ],
+        })
+    }
+
     render(){
         return (
             <>
                 <ToolHeader headerText="Color Tool"/>
                 <ul>
-                    {this.props.colors.map(color => <li key={color.id}>{color.name}</li>)}
+                    {this.state.colors.map(color => 
+                        <li key={color.id}>{color.name}</li>
+                    )}
                 </ul>
-                <ColorForm/>
+                <ColorForm buttonText="Add Color" onSubmitColor={this.addColor}/>
             </>
         );
     }

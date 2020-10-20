@@ -1,6 +1,11 @@
 import React, { Component, ChangeEvent } from "react";
 
-export type ColorFormProps = {};
+import { NewColor } from '../models/colors';
+
+export type ColorFormProps = {
+    buttonText: string;
+    onSubmitColor: (color: NewColor) => void;
+};
 
 export type ColorFormState = {
   name: string;
@@ -23,6 +28,14 @@ export class ColorForm extends Component<ColorFormProps, ColorFormState> {
         e.target.type === "number" ? Number(e.target.value) : e.target.value,
     } as Pick<ColorFormState, keyof ColorFormState>);
   };
+
+  submitColor = () => {
+      this.props.onSubmitColor({...this.state});
+      this.setState({
+          name: "",
+          hexcode: "",
+      })
+  }
 
   render() {
     console.log(this.state);
@@ -50,7 +63,7 @@ export class ColorForm extends Component<ColorFormProps, ColorFormState> {
             onChange={this.change}
           />
         </div>
-        <button type="button">Add Color</button>
+        <button type="button" onClick={this.submitColor}>{this.props.buttonText}</button>
       </form>
     );
   }

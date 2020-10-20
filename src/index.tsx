@@ -9,10 +9,10 @@ import { Color } from './models/colors';
 import { Car } from './models/cars';
 
 const colorList: Color[] = [
-  {id:1, name:'blue'},
-  {id:2, name:'purple'},
-  {id:3, name:'teal'},
-  {id:4, name:'aqua'},
+  {id:1, name:'blue', hexcode: "000FFF"},
+  {id:2, name:'purple', hexcode: "000FFF"},
+  {id:3, name:'teal', hexcode: "000FFF"},
+  {id:4, name:'aqua', hexcode: "000FFF"},
 ];
 
 const carList: Car[] = [
