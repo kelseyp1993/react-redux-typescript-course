@@ -45,6 +45,12 @@ export class CarTool extends Component<CarToolProps> {
         });
     };
 
+    cancelCar = () => {
+        this.setState({
+            editCarId: -1,
+        });
+    };
+
     render() {
         return (
             <>
@@ -54,6 +60,7 @@ export class CarTool extends Component<CarToolProps> {
                     editCarId={this.state.editCarId}
                     onEditCar={this.editCar}
                     onDeleteCar={this.deleteCar}
+                    onCancelCar={this.cancelCar}
                 />
                 <CarForm buttonText="Add Car" onSubmitCar={this.addCar} />
             </>

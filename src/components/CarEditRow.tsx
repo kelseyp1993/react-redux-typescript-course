@@ -32,6 +32,10 @@ export class CarEditRow extends Component<CarEditRowProps, CarEditRowState> {
         } as Pick<CarEditRowState, keyof CarEditRowState>);
     };
 
+    cancelCar = () => {
+        this.props.onCancelCar();
+      };
+
     render() {
         return (
             <tr>
@@ -85,7 +89,7 @@ export class CarEditRow extends Component<CarEditRowProps, CarEditRowState> {
                     <button type="button" onClick={() => null}>
                         Save
           </button>
-                    <button type="button" onClick={() => null}>
+                    <button type="button" onClick={this.cancelCar}>
                         Cancel
           </button>
                 </td>
