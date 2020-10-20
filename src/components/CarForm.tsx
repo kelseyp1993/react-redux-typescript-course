@@ -40,7 +40,7 @@ export class CarForm extends Component<CarFormProps, CarFormState> {
     this.setState({
       make: "",
       model: "",
-      year: 1999,
+      year: 1900,
       color: "",
       price: "",
     })
@@ -52,7 +52,6 @@ export class CarForm extends Component<CarFormProps, CarFormState> {
     return (
       <form>
         <div>
-          {/* React.createElement('label', { htmlFor: 'name-input' }) */}
           <label htmlFor="name-input">Make:</label>
           <input
             type="text"
@@ -107,5 +106,3 @@ export class CarForm extends Component<CarFormProps, CarFormState> {
     );
   }
 }
-
-console.dir(CarForm);

@@ -31,12 +31,18 @@ export class CarTool extends Component<CarToolProps> {
         })
     }
 
+    deleteCar = (carId: number) => {
+        this.setState({
+            cars: this.state.cars.filter((c) => c.id !== carId),
+        });
+    }
+
     render(){
         return (
             <>
                 <ToolHeader headerText="Car Tool"/>
-                <CarTable cars={this.state.cars}/>
-                <CarForm buttonText="Add Color" onSubmitCar={this.addCar}/>
+                <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar}/>
+                <CarForm buttonText="Add Car" onSubmitCar={this.addCar}/>
             </>
         );
     }

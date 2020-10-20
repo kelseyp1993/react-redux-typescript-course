@@ -5,6 +5,7 @@ import { CarViewRow } from './CarViewRow';
 
 export type CarTableProps = {
     cars: Car[];
+    onDeleteCar: (carId: number) => void;
 }
 
 export function CarTable(props: CarTableProps) {
@@ -19,11 +20,12 @@ export function CarTable(props: CarTableProps) {
                         <th>Year</th>
                         <th>Color</th>
                         <th>Price</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {props.cars.map((car) => (
-                        <CarViewRow key={car.id} car={car} />
+                        <CarViewRow key={car.id} car={car} onDeleteCar={props.onDeleteCar}/>
                     ))}
                 </tbody>
             </table>
