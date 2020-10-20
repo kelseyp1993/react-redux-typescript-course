@@ -11,12 +11,14 @@ export type CarToolProps = {
 
 export type CarToolState = {
     cars: Car[];
+    editCarId: number;
 }
 
 export class CarTool extends Component<CarToolProps> {
     state = {
         //copy of the array
         cars: [...this.props.cars],
+        editCarId: -1,
     }
 
     addCar = (newCar: NewCar) => {
@@ -25,7 +27,7 @@ export class CarTool extends Component<CarToolProps> {
                 ...this.state.cars,
                 {
                     ...newCar,
-                    id: Math.max(...this.state.cars.map((c) => c.id), 0) +1,
+                    id: Math.max(...this.state.cars.map((c) => c.id), 0) + 1,
                 },
             ],
         })
@@ -37,12 +39,23 @@ export class CarTool extends Component<CarToolProps> {
         });
     }
 
-    render(){
+    editCar = (carId: number) => {
+        this.setState({
+            editCarId: carId,
+        });
+    };
+
+    render() {
         return (
             <>
-                <ToolHeader headerText="Car Tool"/>
-                <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar}/>
-                <CarForm buttonText="Add Car" onSubmitCar={this.addCar}/>
+                <ToolHeader headerText="Car Tool" />
+                <CarTable
+                    cars={this.state.cars}
+                    editCarId={this.state.editCarId}
+                    onEditCar={this.editCar}
+                    onDeleteCar={this.deleteCar}
+                />
+                <CarForm buttonText="Add Car" onSubmitCar={this.addCar} />
             </>
         );
     }
