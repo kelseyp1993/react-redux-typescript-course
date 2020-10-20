@@ -3,23 +3,18 @@ import React, { Component } from 'react';
 import { Car } from '../models/cars';
 
 export type CarViewRowProps = {
-    cars: Car[];
+    car: Car;
 }
 
-export class CarViewRow extends Component<CarViewRowProps> {
-    render(){
-        return (
-            <>
-                {this.props.cars.map(car => 
-                    <tr key={car.id}>
-                        <td>{car.make}</td>
-                        <td>{car.model}</td>
-                        <td>{car.year}</td>
-                        <td>{car.color}</td>
-                        <td>{car.price}</td>
-                    </tr>
-                )}
-            </>
-        );
-    }
+export function CarViewRow(props: CarViewRowProps) {
+    return (
+        <tr>
+            <td>{props.car.id}</td>
+            <td>{props.car.make}</td>
+            <td>{props.car.model}</td>
+            <td>{props.car.year}</td>
+            <td>{props.car.color}</td>
+            <td>{props.car.price}</td>
+        </tr>
+    );
 }

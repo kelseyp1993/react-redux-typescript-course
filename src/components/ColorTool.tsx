@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import { Color } from '../models/colors';
+import { ColorForm } from './ColorForm';
+
 import { ToolHeader } from './ToolHeader';
 
 export type ColorToolProps = {
@@ -16,6 +18,7 @@ export class ColorTool extends Component<ColorToolProps>{
                 <ul>
                     {this.props.colors.map(color => <li key={color.id}>{color.name}</li>)}
                 </ul>
+                <ColorForm/>
             </>
         );
     }
