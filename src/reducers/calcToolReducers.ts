@@ -1,7 +1,7 @@
 import { CalcToolState } from "../models/calc";
-import { AddAction, SubtractAction, ADD_ACTION, SUBTRACT_ACTION } from "../actions/calcToolActions";
+import { AddAction, SubtractAction, ADD_ACTION, SUBTRACT_ACTION, MULTIPLY_ACTION, DIVIDE_ACTION, MultiplyAction, DivideAction } from "../actions/calcToolActions";
 
-type CalcToolActions = AddAction | SubtractAction;
+type CalcToolActions = AddAction | SubtractAction | MultiplyAction | DivideAction;
 
 export const calcToolReducer = (
     state: CalcToolState = {result: 0}, 
@@ -17,6 +17,16 @@ export const calcToolReducer = (
                 return{
                     ...state,
                     result: state.result - action.payload.value,
+                };
+            case MULTIPLY_ACTION: 
+                return{
+                    ...state,
+                    result: state.result * action.payload.value,
+                };
+            case DIVIDE_ACTION: 
+                return{
+                    ...state,
+                    result: state.result / action.payload.value,
                 };
             default: 
                 return state;
