@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { createAddAction, createSubtractAction, createMultiplyAction, createDivideAction } from '../actions/calcToolActions';
 import { CalcTool } from '../components/CalcTool';
 
-const mapStateToProps = (state: CalcToolState) => ({ result: state.result });
+const mapStateToProps = (state: CalcToolState) => ({ result: state.result, history: state.history });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
     bindActionCreators(

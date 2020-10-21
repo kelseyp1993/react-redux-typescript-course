@@ -1,7 +1,9 @@
 import React, { Component, ChangeEvent } from 'react';
+import { HistoryEntry } from '../models/calc';
 
 export type CalcToolProps = {
     result: number;
+    history: HistoryEntry[];
     onAdd: (num: number) => void;
     onSubtract: (num: number) => void;
     onMultiply: (num: number) => void;
@@ -23,6 +25,7 @@ export class CalcTool extends Component<CalcToolProps, CalcToolState> {
 
     render() {
         return(
+            <>
             <form>
                 <div>Result: {this.props.result}</div>
                 <div>
@@ -56,6 +59,16 @@ export class CalcTool extends Component<CalcToolProps, CalcToolState> {
                     </button>
                 </fieldset>
             </form>
+            <ul>
+                {this.props.history.map((entry) => (
+                    <li key={entry.id}>
+                        {entry.opName} {entry.opValue}
+                    </li>
+                )
+
+                )}
+            </ul>
+            </>
         )
     }
 }
