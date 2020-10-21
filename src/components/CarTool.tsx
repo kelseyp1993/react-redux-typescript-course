@@ -54,20 +54,28 @@ export class CarTool extends Component<CarToolProps> {
     };
 
     saveCar = (carEdit: Car) => {
-        var carsCopy = this.state.cars;
+        // var carsCopy = this.state.cars;
 
-        var index = carsCopy.findIndex(car => {
-            return carEdit.id === car.id;
-        })
+        // var index = carsCopy.findIndex(car => {
+        //     return carEdit.id === car.id;
+        // })
 
-        if (index !== -1) {
-            carsCopy[index] = carEdit;
+        // if (index !== -1) {
+        //     carsCopy[index] = carEdit;
 
-            this.setState({
-                cars: carsCopy,
-                editCarId: -1,
-            });
-        }
+        //     this.setState({
+        //         cars: carsCopy,
+        //         editCarId: -1,
+        //     });
+        // }
+
+        const newCars = [...this.state.cars]; //copy of array instead of reference
+        const carIndex = newCars.findIndex((c) => c.id === carEdit.id);
+        newCars[carIndex] = carEdit;
+        this.setState({
+        cars: newCars,
+        editCarId: -1,
+        });
     };
 
     render() {
