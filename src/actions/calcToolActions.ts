@@ -1,74 +1,102 @@
-import {Action} from 'redux';
+import { Action, AnyAction } from 'redux';
 
 export const ADD_ACTION = 'ADD';
 export const SUBTRACT_ACTION = 'SUBTRACT';
 export const MULTIPLY_ACTION = 'MULTIPLY';
 export const DIVIDE_ACTION = 'DIVIDE';
+export const CLEAR_ACTION = 'CLEAR';
+
+// export type AddAction = Action<string> & {
+//   payload: {
+//     value: number;
+//   };
+// };
+
+// export interface AddAction extends Action<string> {
+//   payload: {
+//     value: number;
+//   };
+// }
 
 export interface AddAction extends Action<typeof ADD_ACTION> {
     payload: {
         value: number;
     };
-};
+}
 
-export type createAddAction = (num: number) => AddAction;
+export function isAddAction(action: AnyAction): action is AddAction {
+    return action.type === ADD_ACTION;
+}
 
-export const createAddAction = (num: number) => {
+export type CreateAddAction = (num: number) => AddAction;
+
+export const createAddAction: CreateAddAction = (num) => {
     return {
         type: ADD_ACTION,
         payload: {
             value: num,
         },
-    } as AddAction;
+    };
 };
 
 export interface SubtractAction extends Action<typeof SUBTRACT_ACTION> {
     payload: {
         value: number;
-    }
+    };
 }
 
-export type createSubtractAction = (num: number) => SubtractAction;
+export type CreateSubtractAction = (num: number) => SubtractAction;
 
-export const createSubtractAction = (num: number) => {
+export const createSubtractAction: CreateSubtractAction = (num) => {
     return {
         type: SUBTRACT_ACTION,
         payload: {
             value: num,
         },
-    } as SubtractAction;
+    };
 };
 
 export interface MultiplyAction extends Action<typeof MULTIPLY_ACTION> {
     payload: {
         value: number;
-    }
+    };
 }
 
-export type createMultiplyAction = (num: number) => MultiplyAction;
+export type CreateMultiplyAction = (num: number) => MultiplyAction;
 
-export const createMultiplyAction = (num: number) => {
+export const createMultiplyAction: CreateMultiplyAction = (num) => {
     return {
         type: MULTIPLY_ACTION,
         payload: {
             value: num,
         },
-    } as MultiplyAction;
+    };
 };
 
 export interface DivideAction extends Action<typeof DIVIDE_ACTION> {
     payload: {
         value: number;
-    }
+    };
 }
 
-export type createdIVIDEAction = (num: number) => DivideAction;
+export type CreateDivideAction = (num: number) => DivideAction;
 
-export const createDivideAction = (num: number) => {
+export const createDivideAction: CreateDivideAction = (num) => {
     return {
         type: DIVIDE_ACTION,
         payload: {
             value: num,
         },
-    } as DivideAction;
+    };
+};
+
+// export interface ClearAction extends Action<typeof CLEAR_ACTION> {}
+export type ClearAction = Action<typeof CLEAR_ACTION>;
+
+export type CreateClearAction = () => ClearAction;
+
+export const createClearAction: CreateClearAction = () => {
+    return {
+        type: CLEAR_ACTION,
+    };
 };

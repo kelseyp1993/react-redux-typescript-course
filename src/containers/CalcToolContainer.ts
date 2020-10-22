@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { CalcToolAppState } from '../models/calc';
 import { bindActionCreators, Dispatch } from 'redux';
-import { createAddAction, createSubtractAction, createMultiplyAction, createDivideAction } from '../actions/calcToolActions';
+import { createAddAction, createSubtractAction, createMultiplyAction, createDivideAction, createClearAction } from '../actions/calcToolActions';
 import { CalcTool } from '../components/CalcTool';
 
-const mapStateToProps = (state: CalcToolAppState) => ({ result: state.result, history: state.history });
+const mapStateToProps = (state: CalcToolAppState) => ({ 
+    result: state.result, 
+    history: state.history,
+    errorMessage: state.errorMessage });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
     bindActionCreators(
@@ -13,6 +16,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
             onSubtract: createSubtractAction,
             onMultiply: createMultiplyAction,
             onDivide: createDivideAction,
+            onClear: createClearAction,
         },
         dispatch,
     );
